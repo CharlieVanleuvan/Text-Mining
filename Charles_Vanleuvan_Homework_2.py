@@ -11,8 +11,8 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 def get_articles(search):
     """A function that retrieves articles about the search term, and saves them locally to a corpus folder"""
 
-    #api key from NY Times developers portal. Please dont steal
-    api_key = "U9c6J3tKAHiG8zXNjOVZcA88gsTumnAt"
+    #api key from NY Times developers portal. Need to create an account on their website
+    api_key = "ENTER-YOUR-API-KEY-HERE"
 
     #lazily assign argument to string in case int is supplied. Further development would include try/except block here
     search = str(search)
@@ -27,7 +27,7 @@ def get_articles(search):
     counter = 1 #counter for number of articles. will be used to name the txt files
     for text in articles_json:
         words = text['lead_paragraph']
-        file_path = r"C:\Users\Charlie Vanleuvan\OneDrive - Syracuse University\IST 736 Text Mining\corpus\{}{}.txt".format(search,str(counter))
+        file_path = r"C:\your\file\path\here\{}{}.txt".format(search,str(counter))
         with open(file_path,'w', encoding='utf-8') as f:
             f.write(words)
         counter += 1
@@ -41,7 +41,6 @@ def get_articles(search):
 def vectorizer(vectorizer):
     #requires sklearn CountVectorizer, TfidfVectorizer, pandas installed, os installed
     #take file path
-    #C:\Users\Charlie Vanleuvan\OneDrive - Syracuse University\IST 736 Text Mining\corpus
     path = input("Enter the file path to the corpus: ")
     
     #create list of file names
@@ -109,5 +108,5 @@ if __name__ == "__main__":
     print(tfidf_df)
 
     #save to xlsx in folder
-    cv_df.to_excel(r"C:\Users\Charlie Vanleuvan\OneDrive - Syracuse University\IST 736 Text Mining\homework_2_cv_df.xlsx", index = False)
-    tfidf_df.to_excel(r"C:\Users\Charlie Vanleuvan\OneDrive - Syracuse University\IST 736 Text Mining\homework_2_tfidf_df.xlsx", index = False)
+    cv_df.to_excel(r"file-path-to-save-to\file_name_to_save_as.xlsx", index = False)
+    tfidf_df.to_excel(r"file-path-to-save-to\file_name_to_save_as.xlsx", index = False)
